@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+<title>FAQ</title>
+<style>
+    .faq-item {
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .faq-item h2 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    </style>
+{% block body_block %}
+
+<div style="padding:80px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">contact</a></li>
+                                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+                                </ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+</div>
+<h1 style="margin-left:20px;font-weight:bold;font-size:25px">Frequently Asked Questions</h1><br>
+    <div class="faq-item" style="margin-left:20px">
+        <h2>Q: How do I book a parking spot?</h2><br>
+        <p>A: To book a parking spot, please visit our website or use our mobile app.</p><br>
+    </div>
+    <div class="faq-item" style="margin-left:20px">
+        <h2>Q: Can I cancel my parking reservation?</h2><br>
+        <p>A: Yes, you can cancel your reservation through our website or app up to 24 hours before your booking time.</p><br>
+    </div>
+    <div class="faq-item" style="margin-left:20px">
+        <h2>Q: Do you offer discounts for long-term parking?</h2><br>
+        <p>A: Yes, we offer discounts for long-term parking. Please check our website for more details.</p><br>
+    </div>
+        {% endblock %}

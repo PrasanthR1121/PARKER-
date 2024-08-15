@@ -1,0 +1,82 @@
+{% extends 'basic.html' %}
+        <title>Parker</title>
+{% block body_block %}
+		<section id="home" class="welcome-hero">
+			<div class="top-area">
+				<div class="header-area">
+				    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll active"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">Contact</a></li>
+			                        <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+								</ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+			    <div class="clearfix"></div>
+			</div>
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>FIND A PERFECT SPOT FOR YOUR CAR</h2>
+					<p>
+						An Efficient Parking System
+					</p>
+					<button style="color:rgb(255, 255, 255);background-color:transparent;font-size:50px;font-family:Pacifico" class="welcome-btn">WELCOME {{ request.session.name }}</button>
+				</div>
+			</div>
+		</section>
+		 <section id="service" class="service">
+			<div class="container">
+				<div class="service-content">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car"></i>
+								</div>
+								<h2><a href="#">NO PAYMENT</a></h2>
+								<p>
+									A free website to find parking slots from your fingertips.
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car-repair"></i>
+								</div>
+								<h2><a href="#">EASY PARKING</a></h2>
+								<p>
+									Experience fast-track parking exit at any PARKER parking location.
+								</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="single-service-item">
+								<div class="single-service-icon">
+									<i class="flaticon-car-1"></i>
+								</div>
+								<h2><a href="#">FREE PARKING SLOTS</a></h2>
+								<p>
+									See vacant parking slots through PARKER website.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</section>
+    {% endblock %}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Experience</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 3rem;
+            color: #ddd;
+            cursor: pointer;
+            padding: 0 15px;
+            position: relative;
+        }
+
+        .rating label::before {
+            content: "★";
+            pointer-events: none; 
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label {
+            color: #FFD700;
+        }
+
+        .rating label:hover::before,
+        .rating label:hover ~ label::before,
+        .rating input:checked ~ label::before {
+            color: #FFD700;
+        }
+
+
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3b19a0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #491bd5;
+        }
+        .alert {
+            position: relative;
+            top: auto;
+            left: 43%;
+            width: 200px;
+            padding: 10px;
+            background-color: #491bd5;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+    </head>
+    <body>
+        <h1 id="h1">Hey {{ request.session.name }}!!!</h1>  
+    <div id="feedbackForm">
+        <form id="feedbackFormContent" method="post" action="{% url 'user_exp' %}">
+            {% csrf_token %}
+            <label for="experience">How was your experience?</label>
+            
+            <input type="hidden" id="name" name="name" value="{{ request.session.name }}">
+            <input type="hidden" id="email" name="email" value="{{ request.session.email }}">
+
+            <textarea id="experience" name="experience" rows="4" cols="50" required></textarea>
+
+            <label for="rating">Rate your experience:</label>
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
+            </div>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <div style="text-align:center;" id="alertMsg" class="alert">Thanks For The Feedback!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var feedbackForm = document.getElementById('feedbackForm');
+            var alertMsg = document.getElementById('alertMsg');
+            var h1 = document.getElementById('h1');
+    
+            var form = document.getElementById('feedbackFormContent');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); 
+    
+                var formData = new FormData(form);
+    
+                fetch('{% url "user_exp" %}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.text())
+                .then(text => {
+                    console.log(text);
+                    alertMsg.style.display = 'block'; 
+                    feedbackForm.style.display = 'none';
+                    h1.style.display = 'none';
+                    
+                    setTimeout(function() {
+                        window.location.href = '{% url "service" %}'; 
+                    }, 1500); 
+                })
+                .catch(error => console.error('Error:', error));
+            });
+    
+            document.addEventListener('click', function(event) {
+                if (!feedbackForm.contains(event.target)) {
+                    alertMsg.style.display = 'none';
+                    window.location.href = '{% url "service" %}';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'basic.html' %}
+        <title>About</title>
+{% block body_block %}
+<head>
+	<style>
+.about-us
+{
+  max-width: 1000px;
+  margin: 10px 0px;
+  text-align: justify;
+  padding: 10px 10px;
+	text-indent: 50px
+}
+
+.about-us h1
+{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-us p
+{
+  text-align: justify;
+  margin: 0 0;
+  padding: 0 20px;
+}
+	</style>
+</head>
+<div style="display:inline-flex;padding:200px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll active"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+								</ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+    <div class="about-us">
+  <h1>About Us</h1>
+  <p>Welcome to Parker, where we are dedicated to revolutionizing the parking experience.
+	  Our mission is to provide efficient, convenient, and sustainable parking solutions for urban areas, ensuring a stress-free experience for both drivers and property owners.
+	  At Parker, we leverage cutting-edge technology to optimize parking space utilization, minimize congestion, and enhance overall traffic management. With our user-friendly mobile app and intuitive reservation system, we aim to make parking hassle-free and enjoyable for everyone.
+	  Driven by innovation and a commitment to excellence, we are constantly evolving to meet the evolving needs of urban mobility. Join us on our journey to transform parking into a seamless and sustainable experience for all.</p>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'basic.html' %}
+
+<title>Terms and Conditions</title>
+<style>
+    ol {
+        list-style-type: decimal;
+        margin-left: 20px;
+    }
+</style>
+{% block body_block %}
+<div style="padding:80px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">Contact</a></li>
+				                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+				                </ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+</div>
+<div>
+<h1 style="margin-left:20px;font-weight:bold;font-size:25px">Terms & Conditions</h1><br>
+    <ol style="margin-left:40px;">
+        <li>By using our parking system, you agree to comply with these terms and conditions.</li><br>
+        <li>You must pay the parking fee in accordance with our rates and payment methods.</li><br>
+        <li>We are not responsible for any damage to vehicles parked in our facilities.</li><br>
+        <li>Users must follow all posted parking regulations and instructions from our staff.</li><br>
+        <li>Reservations are subject to availability and can be canceled or modified in accordance with our policies.</li><br>
+    </ol>
+</div>
+        {% endblock %}

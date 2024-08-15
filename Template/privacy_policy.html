@@ -1,0 +1,64 @@
+
+{% extends 'basic.html' %}
+<title>Privacy Policy</title>
+<style>
+    .privacy-section {
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .privacy-section h2 {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    </style>
+{% block body_block %}
+<div style="padding:80px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">contact</a></li>
+                                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+                                </ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+</div>
+<h1 style="margin-left:20px;font-weight:bold;font-size:25px">Privacy Policy</h1><br>
+    <div class="privacy-section" style="margin-left:20px">
+        <h2>Information Collection</h2>
+        <p>We collect personal information such as name, email, phone number, and vehicle details when you book a parking spot.</p><br>
+    </div>
+    <div class="privacy-section" style="margin-left:20px">
+        <h2>Information Use</h2>
+        <p>We use your information to process reservations, communicate with you, and improve our services.</p><br>
+    </div>
+    <div class="privacy-section" style="margin-left:20px">
+        <h2>Information Protection</h2>
+        <p>We protect your information using industry-standard security measures to prevent unauthorized access or disclosure.</p><br>
+    </div>
+    <div class="privacy-section" style="margin-left:20px">
+        <h2>Third-Party Disclosure</h2>
+        <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent.</p><br>
+    </div>
+    <div class="privacy-section" style="margin-left:20px">
+        <h2>Cookies</h2>
+        <p>We use cookies to enhance your experience on our website and improve our services.</p><br>
+    </div>
+        {% endblock %}

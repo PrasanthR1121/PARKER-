@@ -1,0 +1,157 @@
+{% extends 'basic.html' %}
+        <title>Service</title>
+        <script>
+            window.onload = function() {
+                var urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('vacate')) {
+                    document.getElementById('feedbackForm').style.display = 'block';
+                }
+            };
+        </script>
+    </body>
+    </html>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            margin-top: 10px;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+{% block body_block %}
+
+<div style="padding-top:200px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll  active"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+				                </ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+
+<div class="container">
+    <h1>Parking System Services</h1>
+    <p style="padding-top:10px">Welcome to our parking system! We offer the following services:</p>
+
+    <h2 style="padding-top:10px">Book a Parking Spot</h2>
+    <p style="padding-top:10px">To book a parking spot, please fill out the form below:</p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="vehicle">Vehicle Number:</label>
+            <input type="text" id="vehicle" name="vehicle" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration (hours):</label>
+            <input type="number" id="duration" name="duration" class="form-control" min="1" required>
+        </div>
+        <div class="form-group">
+            <label for="loc">Location:</label>
+            <select id="loc" name="loc" class="form-control" required>
+                <option value="Idukki">Idukki</option>
+                <option value="Ernakulam">Ernakulam</option>
+                <option value="Trivandrum">Trivandrum</option>
+                <option value="Chennai">Chennai</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Book Now</button>
+    </form>
+
+    <h2 style="padding-top:20px">Check Parking Availability</h2>
+    <p style="padding-top:10px">To check the availability of parking spots, please click <a href="{% url 'location' %}">here</a>.</p>
+
+    <h2 style="padding-top:10px">Vacate Now</h2>
+    <p style="padding-top:10px">Click the following button to vacate your parking slot.</p><br>
+        <form method="post" action="{% url 'vacate' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Vacate</button>
+        </form>
+	<br><br>
+</div>
+</div>
+{% endblock %}

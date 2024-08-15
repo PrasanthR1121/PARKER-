@@ -1,0 +1,52 @@
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+  <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+  <script  src="https://code.jquery.com/jquery-3.7.1.js"  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="  crossorigin="anonymous"></script>
+  <script src="./js/login.js"></script>
+
+</head>
+<body>
+<section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'images/sign-up/signin-image.jpg' %}" alt="sing up image"></figure>
+                        <strong><a href="{% url 'register' %}" class="signup-image-link" style="color:#2351ce">TO REGISTER</a></strong>
+                    </div>
+                    <div class="signin-form">
+                        <h2 class="form-title" style="color:#113bb0">SIGN IN</h2>
+						<form method="POST" class="register-form" id="login-form" action="{% url 'user_login' %}">
+							{% csrf_token %}
+                            <div class="form-group">
+                                <label for="your_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="email" id="your_email" placeholder="Enter Your Email" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Enter Your Password" required/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+</html>

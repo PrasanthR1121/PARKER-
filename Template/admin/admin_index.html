@@ -1,0 +1,321 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'admin/assets/img/apple-icon.png' %}"/>
+    <link rel="icon" type="image/png" href="{% static 'admin/assets/img/favicon.png' %}"/>
+    <title>Admin Dashboard</title>
+    <!--     Fonts and icons     -->
+    <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' %}" rel="stylesheet"/>
+    <!-- Font Awesome Icons -->
+    <script src="{% static 'https://kit.fontawesome.com/42d5adcbca.js' %}" crossorigin="anonymous"></script>
+    <!-- Nucleo Icons -->
+    <link href="{% static 'admin/assets/css/nucleo-icons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'admin/assets/css/nucleo-svg.css' %}" rel="stylesheet"/>
+    <!-- Popper -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Main Styling -->
+    <link href="{% static 'admin/assets/css/argon-dashboard-tailwind.css' %}" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 40px;
+            padding: 40px;
+        }
+        .block {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+        }
+        h6
+        {
+            font-size:20px;
+            color:#25c5c5;
+        }
+
+        table {
+            width: 100%;
+            margin-left:0px;
+            border-bottom: 1.8px solid #25c5c5;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th
+        {
+            background-color: #e1dada3a;
+            font-weight: bold;
+            border-bottom: 1.8px solid #25c5c5;
+            border-top: 1.8px solid #25c5c5;
+        }
+
+        th, td
+        {
+            text-align: center;
+            padding: 15px;
+        }
+        #td1, #td2
+        {
+            text-align: center;
+            padding: 5px;
+        }
+        #loc1, #loc2, #loc3, #loc4
+        {
+            text-align: left;
+        }
+        .content
+        {
+            margin: 100px auto 0;
+            position: relative;
+            left: -100px;
+            top: 100px;
+            max-width: 800px;
+        }
+        #ind
+        {
+            margin-left:50px;
+            border-top:1.8px solid #2332da94;
+            border-bottom:1.8px solid #2332da94 ;
+        }
+        #aside
+        {
+            height:400px;
+        }
+
+        #subscribe{
+            height:auto;
+        }
+        #b2
+        {
+            font-size:20px;
+            border-radius:5px;
+            color:#ff0000;
+            padding:5px 10px;
+            margin-top:5px;
+        }
+        #b2:hover
+        {
+            color:#ff0000;
+            cursor:pointer;
+            scale:1.3;
+            text-shadow:0 0 18px;
+        }
+
+    </style>
+</head>
+<body class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
+<div class="absolute w-full bg-blue-500 dark:hidden min-h"></div>
+
+<aside class="fixed inset-y-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto antialiased transition-transform duration-200 -translate-x-full bg-white border-0 shadow-xl dark:shadow-none dark:bg-slate-850 max-w-64 ease-nav-brand z-990 xl:ml-6 rounded-2xl xl:left-0 xl:translate-x-0"
+       aria-expanded="false">
+    <div class="h-19">
+        <i class="absolute top-0 right-0 p-4 opacity-50 cursor-pointer fas fa-times dark:text-white text-slate-400 xl:hidden"
+           sidenav-close></i>
+        <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap dark:text-white text-slate-700"
+           target="blank">
+            <img src="{% static 'admin/assets/img/logo-ct-dark.png' %}"
+                 class="inline h-full max-w-full transition-all duration-200 dark:hidden ease-nav-brand max-h-8"
+                 alt="main_logo"/>
+            <img src="{% static 'admin/assets/img/logo-ct.png' %}"
+                 class="hidden h-full max-w-full transition-all duration-200 dark:inline ease-nav-brand max-h-8"
+                 alt="main_logo"/>
+            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Admin Dashboard</span>
+        </a>
+    </div>
+
+    <hr class="h-px mt-0 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent"/>
+
+    <div id="aside" class="items-center block w-auto max-h-screen h-sidenav grow basis-full">
+        <ul class="flex flex-col pl-0 mb-0">
+            <li class="mt-0.5 w-full">
+                <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
+                   href="{% url 'admin_index' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'bookings' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-calendar-grid-58"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Bookings</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'feedback' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-cyan-500 ni ni-app"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Contact</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'view_locations' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-red-600 ni ni-world-2"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Locations</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'user_feedback' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="ni ni-email-83 text-blue-500"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Feedback</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'user_login' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-orange-500 ni ni-single-copy-04"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Sign In</span>
+                </a>
+            </li>
+
+            <li class="mt-0.5 w-full">
+                <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
+                   href="{% url 'register' %}">
+                    <div class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
+                        <i class="relative top-0 text-sm leading-normal text-cyan-500 ni ni-collection"></i>
+                    </div>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease">Sign Up</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</aside>
+
+<main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
+
+    <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start"
+         navbar-main navbar-scroll="false">
+        <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+            <nav>
+                <h6 class="mb-0 font-bold capitalize">DASHBOARD</h6>
+            </nav>
+
+            <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex lg:basis-auto">
+                <div class="flex items-center md:ml-auto md:pr-4">
+                    <div class="relative flex flex-wrap items-stretch w-full transition-all rounded-lg ease">
+                <span class="text-sm ease leading-5.6 absolute z-50 -ml-px flex h-full items-center whitespace-nowrap rounded-lg rounded-tr-none rounded-br-none border border-r-0 border-transparent bg-transparent py-2 px-2.5 text-center font-normal text-slate-500 transition-all">
+                  <i class="fas fa-search"></i>
+                </span>
+                        <input type="text"
+                               class="pl-9 text-sm focus:shadow-primary-outline ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 dark:bg-slate-850 dark:text-white bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
+                               placeholder="Type here..."/>
+                    </div>
+                </div>
+                <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+
+                    <li class="flex items-center">
+                        <a href="{% url 'user_login' %}"
+                           class="transition-all ease-nav-brand">
+                            <i class="fa fa-user"></i>
+                            <span class="sign hidden sm:inline">Logout </span>
+                        </a>
+                    </li>
+    </nav>
+    <div class="dash">
+        <div class="container">
+            <div class="block">
+                <h2>Status</h2>
+                <p>Slot Status:</p>
+                <ul>
+                    <table style="margin-left:5px">
+                        <tr>
+                            <th style="color:#0b71dc; font-weight:bold;">Locations</th>
+                            <th style="color:#2424cb; font-weight:bold;">Available Slots</th>
+                            <th style="color:#a60ad5; font-weight:bold;">Reserved Slots</th>
+                        </tr>
+                        <tr>
+                            <td id="loc1"><b>{{ Idukki }}</b></td>
+                            <td><b>{{ Idukki_Available }} Slots</b></td>
+                            <td><b>{{ Idukki_Reserved }} Slots</b></td>
+                        </tr>
+                        <tr>
+                            <td id="loc2"><b>{{ Ernakulam }}</b></td>
+                            <td><b>{{ Ernakulam_Available }} Slots</b></td>
+                            <td><b>{{ Ernakulam_Reserved }} Slots</b></td>
+                        </tr>
+                        <tr>
+                            <td id="loc3"><b>{{ Trivandrum }}</b></td>
+                            <td><b>{{ Trivandrum_Available }} Slots</b></td>
+                            <td><b>{{ Trivandrum_Reserved }} Slots</b></td>
+                        </tr>
+                        <tr>
+                            <td id="loc4"><b>{{ Chennai }}</b></td>
+                            <td><b>{{ Chennai_Available }} Slots</b></td>
+                            <td><b>{{ Chennai_Reserved }} Slots</b></td>
+                        </tr>
+                    </table>
+                </ul>
+            </div>
+            <div class="block">
+                <h2>Map View</h2>
+                <p>Map showing global distribution of parking spaces.</p>
+                <div class="ind">
+                    <img id="ind" src="{% static '/admin/assets/img/India.png' %}">
+                </div>
+            </div>
+            <div class="block" id="subscribe">
+                <h2>Subscribers</h2>
+                <p>Our Subscribers:</p>
+                <table id="sub">
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                    </tr>
+                    {% for i in sub %}
+                    <tr>
+                        <td id="td1" style="text-align:left;">{{ i.email }}</td>
+                        <td id="td2">
+                            <form method="post" action="{% url 'delete_subscribers' id=i.id %}">
+                                {% csrf_token %}
+                                <button id="b2"> &#x2716;</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="block">
+                <h2>Services Providing</h2>
+                <p>List of services provided:</p>
+                <ul>
+                    <li>Payment Free</li>
+                    <li>Efficient Parking</li>
+                    <li>Scalability and Flexibility</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

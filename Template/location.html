@@ -1,0 +1,121 @@
+{% extends 'basic.html' %}
+{% load static %}
+        <title>Location</title>
+{% block body_block %}
+<style>
+    h2
+  {
+    padding-top:20px;
+    font-size:20px;
+  }
+    .location-card {
+        margin-right:20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .location-card img{
+        margin-top:20px;
+        right:-20px;
+        max-width: 100%;
+        border-radius: 5px;
+        transition:transform .2s ease-in-out;
+    }
+</style>
+<div style="padding-top:200px" class="top-area">
+				<div class="header-area">
+				    <nav style="background-color:#2a2d54" class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+				        <div class="container">
+				            <div class="navbar-header">
+				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+				                    <i class="fa fa-bars"></i>
+				                </button>
+				                <a class="navbar-brand" href="{% url 'index' %}">PARKER<span></span></a>
+				            </div>
+							<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+				                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+				                    <li class="scroll"><a href="{% url 'index' %}">Home</a></li>
+				                    <li class="scroll"><a href="{% url 'service' %}">Service</a></li>
+				                    <li class="scroll active"><a href="{% url 'location' %}">Locations</a></li>
+									<li class="scroll"><a href="{% url 'about' %}">About</a></li>
+				                    <li class="scroll"><a href="{% url 'contact' %}">Contact</a></li>
+                                    <li class="scroll"><a href="{% url 'user_login' %}">Logout</a></li>
+				                </ul>
+				            </div>
+				        </div>
+					</nav>
+				</div>
+
+    <div class="container">
+    <h1><b>OUR LOCATIONS</b></h1>
+    <div style="display: grid;
+        grid-template-columns: repeat(2, 2fr);
+        grid-gap: 10px;
+        padding: 10px;">
+        <div class="">
+            <div class="location-card">
+                <img style="
+                height:40%;
+                width:40%;"
+
+                     src="{% static '/admin/assets/img/Idukki.jpg' %}">
+                <h2>Idukki</h2>
+                <p>
+                   {% if Idukki_Slots <= 5 %}
+                    <a href="{% url 'service' %}"><span style="color:#f10909; font-size:15px;">Only {{ Idukki_Slots }} Slots Left</span></a>
+                   {% else %}
+                    <a href="{% url 'service' %}"><span style="color:#2f15b6; font-size:15px;">{{ Idukki_Slots }} Slots Left</span></a>
+                   {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="">
+            <div class="location-card">
+                <img style="
+                height:138px;
+                width:40%;
+                padding-bottom:-20px;"
+                     src="{% static '/admin/assets/img/Ernakulam.jpg' %}">
+                <h2>Ernakulam</h2>
+                <p>{% if Ernakulam_Slots <= 5 %}
+                   <a href="{% url 'service' %}"><span style="color:#f10909; font-size:15px;">Only {{ Ernakulam_Slots }} Slots Left</span></a>
+                   {% else %}
+                   <a href="{% url 'service' %}"><span style="color:#2f15b6; font-size:15px;">{{ Ernakulam_Slots }} Slots Left</span></a>
+                   {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="">
+            <div class="location-card">
+                <img style="
+                height:40%;
+                width:40%;"
+                     src="{% static '/admin/assets/img/Trivandrum.jpg' %}">
+                <h2>Trivandrum</h2>
+                <p>{% if Trivandrum_Slots <= 5 %}
+                    <a href="{% url 'service' %}"><span style="color:#f10909; font-size:15px;">Only {{ Trivandrum_Slots }} Slots Left</span></a>
+                   {% else %}
+                       <a href="{% url 'service' %}"><span style="color:#2f15b6; font-size:15px;">{{ Trivandrum_Slots }} Slots Left</span></a>
+                   {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="">
+            <div class="location-card">
+            <img style="
+                height:138px;
+                width:40%;"
+                     src="{% static '/admin/assets/img/Chennai.jpg' %}">
+                <h2>Chennai</h2>
+                {% if Chennai_Slots <= 5 %}
+                <a href="{% url 'service' %}"><span style="color:#f10909; font-size:15px;">Only {{ Chennai_Slots }} Slots Left</span></a>
+                   {% else %}
+                       <a href="{% url 'service' %}"><span style="color:#2f15b6; font-size:15px;">{{ Chennai_Slots }} Slots Left</span></a>
+                   {% endif %}
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+</div>
+{% endblock %}
